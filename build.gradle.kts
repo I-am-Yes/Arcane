@@ -25,6 +25,12 @@ dependencies {
     // Keep your existing test dependencies here.
 }
 
+sourceSets {
+    main {
+        java.setSrcDirs(listOf("src"))
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
