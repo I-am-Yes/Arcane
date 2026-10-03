@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * Global event listener system.
+ * Source: <a href="https://github.com/Anuken/Arc/blob/master/arc-core/src/arc/Events.java">Arc Events</a>
+ * Refactored for this project uses
+ */
 public class Events {
 
     public enum Trigger {
@@ -18,7 +23,6 @@ public class Events {
     }
 
     private static final Map<Object, List<Consumer<?>>> listeners = new HashMap<>();
-
     private static final List<Consumer<Object>> globalListeners = new ArrayList<>();
 
     private Events() {}
@@ -85,6 +89,6 @@ public class Events {
 
     @SuppressWarnings("unchecked")
     private static void invoke(Consumer<?> consumer) {
-        ((Consumer<Object>) consumer).accept(null);
+        consumer.accept(null);
     }
 }
