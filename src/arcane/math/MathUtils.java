@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package arcane.utils;
+package arcane.math;
 
 import java.util.Random;
 

@@ -1,7 +1,7 @@
 package arcane.extra;
 
-import com.badlogic.gdx.math.MathUtils;
 import arcane.Time;
+import arcane.math.MathUtils;
 
 public class TimeEx extends Time {
 

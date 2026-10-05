@@ -1,6 +1,6 @@
 package arcane;
 
-import arcane.utils.MathUtils;
+import arcane.math.MathUtils;
 import arcane.extra.TimeEx;
 import com.badlogic.gdx.Gdx;
 

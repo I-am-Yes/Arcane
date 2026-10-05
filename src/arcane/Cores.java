@@ -1,7 +1,7 @@
 package arcane;
 
-import arcane.graphics.Window;
-import arcane.input.InputHandler;
+import arcane.graphics.*;
+import arcane.input.*;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

@@ -26,6 +26,14 @@ public class Window {
         setWindowedMode(windowWidth, windowHeight);
     }
 
+    public static int getWidth() {
+        return Gdx.graphics.getWidth();
+    }
+
+    public static int getHeight() {
+        return Gdx.graphics.getHeight();
+    }
+
     public void setWindowedMode() {
         setWindowedMode(windowWidth, windowHeight);
     }
@@ -82,14 +90,6 @@ public class Window {
 
     public boolean isBorderlessFullscreen() {
         return isBorderlessFullscreen;
-    }
-
-    public int getWidth() {
-        return windowWidth;
-    }
-
-    public int getHeight() {
-        return windowHeight;
     }
 
     public void setVSync(boolean vSync) {

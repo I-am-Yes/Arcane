@@ -1,15 +1,12 @@
 package arcane.graphics;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import static arcane.Cores.batch;
-import static arcane.Cores.shape;
+import static arcane.graphics.Color.*;
+import static arcane.Cores.*;
 
 public class Artist {
 
@@ -18,10 +15,14 @@ public class Artist {
         viewport.apply();
     }
 
+    public static void screenClear() {
+        ScreenUtils.clear(BLACK);
+    }
+
     public static void DrawBatch(SpriteBatch batch, TextureRegion region, float x, float y, float width, float height, Color color) {
         if (region == null) return;
         float oldColor = batch.getPackedColor();
-        batch.setColor(color == null ? Color.WHITE : color);
+        batch.setColor(color == null ? WHITE : color);
         batch.begin();
         batch.draw(region, x, y, width, height);
         batch.end();
@@ -31,7 +32,7 @@ public class Artist {
     public static void DrawBatch(SpriteBatch batch, TextureRegion region, float x, float y, float originX, float originY, float width, float height, float scaleX, float scaleY, float rotation, Color color) {
         float oldColor = batch.getPackedColor();
         if (region == null) return;
-        batch.setColor(color == null ? Color.WHITE : color);
+        batch.setColor(color == null ? WHITE : color);
         batch.begin();
         batch.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
         batch.end();
@@ -58,7 +59,7 @@ public class Artist {
 
     public static void DrawRect(ShapeRenderer shape, float x, float y, float width, float height, Color color) {
         shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.setColor(color == null ? Color.WHITE : color);
+        shape.setColor(color == null ? WHITE : color);
         shape.rect(x, y, width, height);
         shape.end();
     }
@@ -69,7 +70,7 @@ public class Artist {
 
     public static void DrawLine(ShapeRenderer shape, float x, float y, float x2, float y2, float thickness, Color color) {
         shape.begin(ShapeRenderer.ShapeType.Line);
-        shape.setColor(color == null ? Color.WHITE : color);
+        shape.setColor(color == null ? WHITE : color);
         shape.rectLine(x, y, x2, y2, thickness);
         shape.end();
     }

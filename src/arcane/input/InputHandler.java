@@ -1,11 +1,11 @@
 package arcane.input;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.IntSet;
+import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import arcane.math.*;
 
 public class InputHandler extends com.badlogic.gdx.InputAdapter {
     public java.util.function.BooleanSupplier worldInputBlocked = () -> false;
