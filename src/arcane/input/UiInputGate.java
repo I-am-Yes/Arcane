@@ -1,10 +1,9 @@
 package arcane.input;
 
-import com.badlogic.gdx.math.Vector2;
-
+import arcane.math.Vector2;
 import static arcane.Cores.*;
 
-public class UiInputGate extends InputHandler {
+public class UiInputGate extends com.badlogic.gdx.InputAdapter {
 
     private final Vector2 point = new Vector2();
 
@@ -12,7 +11,7 @@ public class UiInputGate extends InputHandler {
 
     private boolean updateUiHit(int screenX, int screenY) {
         point.set(screenX, screenY);
-        viewport.unproject(point);
+        uiStage.screenToStageCoordinates(point);
         pointerOverGUI = uiStage.hit(point.x, point.y, true) != null;
         return pointerOverGUI;
     }

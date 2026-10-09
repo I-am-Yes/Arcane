@@ -1,7 +1,6 @@
 package arcane.graphics;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
+import arcane.*;
 
 public class Window {
 
@@ -101,59 +100,33 @@ public class Window {
         return vSync;
     }
 
-    public float getLatestFrameRate() {
-        float deltaTime = Gdx.graphics.getDeltaTime();
-        // Prevent division by zero if a frame finishes instantly
-        return (deltaTime > 0) ? (1.0f / deltaTime) : 0;
-    }
-
-    private float delayTimer;
-    private float currentFPS;
-    public float getLatestFrameRateAfterDelay(float delay) {
-        float deltaTime = Gdx.graphics.getDeltaTime();
-
-        if (delay <= 0f) return deltaTime > 0f ? 1f / deltaTime : 0f;
-
-        delayTimer += deltaTime;
-        if (delayTimer >= delay / 1000f) {
-            currentFPS = deltaTime > 0f ? 1f / deltaTime : 0f;
-            delayTimer %= delay / 1000f;
-        }
-        return currentFPS;
-    }
-
-    public int getLatestFrameRateAfterDelay(int delay) {
-        return (int) getLatestFrameRateAfterDelay((float) delay);
-    }
-
     private float averageTimer;
-    private float totalDeltaTime;
-    private int frameCount;
+    private float weightedFPSTotal;
     private float averageFPS;
+
+    /** Call once per rendered frame. avgTime is in milliseconds. */
     public float getAverageFrameRate(float avgTime) {
-        float deltaTime = Gdx.graphics.getDeltaTime();
+        int fps = Gdx.graphics.getFramesPerSecond();
 
         if (avgTime <= 0f) {
-            return deltaTime > 0f ? 1f / deltaTime : 0f;
+            return fps;
         }
 
-        float avgTimeSeconds = avgTime / 1000f;
-
+        float deltaTime = Gdx.graphics.getDeltaTime();
         averageTimer += deltaTime;
-        totalDeltaTime += deltaTime;
-        frameCount++;
+        weightedFPSTotal += fps * deltaTime;
 
-        if (averageTimer >= avgTimeSeconds) {
-            averageFPS = totalDeltaTime > 0f
-                ? frameCount / totalDeltaTime
-                : 0f;
-
-            averageTimer %= avgTimeSeconds;
-            totalDeltaTime = 0f;
-            frameCount = 0;
+        if (averageTimer >= avgTime / 1000f) {
+            averageFPS = weightedFPSTotal / averageTimer;
+            averageTimer = 0f;
+            weightedFPSTotal = 0f;
         }
 
         return averageFPS;
+    }
+
+    public int getFrameRate() {
+        return Gdx.graphics.getFramesPerSecond();
     }
 
     public float getDeltaTime() {
