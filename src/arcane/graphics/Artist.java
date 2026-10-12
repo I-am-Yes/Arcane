@@ -10,6 +10,8 @@ import static arcane.Cores.*;
 
 public class Artist {
 
+
+
     public static void screenClear(Viewport viewport) {
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         viewport.apply();
@@ -23,9 +25,7 @@ public class Artist {
         if (region == null) return;
         float oldColor = batch.getPackedColor();
         batch.setColor(color == null ? WHITE : color);
-        batch.begin();
         batch.draw(region, x, y, width, height);
-        batch.end();
         batch.setPackedColor(oldColor);
     }
 
@@ -33,9 +33,7 @@ public class Artist {
         float oldColor = batch.getPackedColor();
         if (region == null) return;
         batch.setColor(color == null ? WHITE : color);
-        batch.begin();
         batch.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
-        batch.end();
         batch.setPackedColor(oldColor);
     }
 
@@ -46,12 +44,9 @@ public class Artist {
 
     public static void DrawSprite(Sprite sprite, float x, float y, float sizeX, float sizeY, SpriteBatch batch) {
         if (sprite == null || batch == null) return;
-        batch.begin();
         sprite.setSize(sizeX, sizeY);
         sprite.setPosition(x, y);
         sprite.draw(batch);
-        batch.end();
-
     }
     public static void DrawRect( float x, float y, float width, float height, Color color) {
         DrawRect(shape, x, y, width, height, color);
