@@ -1,5 +1,7 @@
 package arcane;
 
+import arcane.graphics.Artist;
+
 public abstract class GameCore implements ApplicationListener {
     protected ApplicationListener[] children = new ApplicationListener[0];
 
@@ -20,7 +22,11 @@ public abstract class GameCore implements ApplicationListener {
     @Override
     public void update() {
         for (ApplicationListener child : children) {
-            child.update();
+            try {
+                child.update();
+            } finally {
+                Artist.flush();
+            }
         }
     }
 
@@ -47,6 +53,8 @@ public abstract class GameCore implements ApplicationListener {
 
     @Override
     public void dispose() {
+        Artist.flush();
+
         for (ApplicationListener child : children) {
             child.dispose();
         }

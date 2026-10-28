@@ -272,6 +272,13 @@ public final class MathUtils {
 		return x + y; // returns 0 for 0,0 or NaN if either y or x is NaN
 	}
 
+	/** Returns the counterclockwise angle from the first position to the target, in degrees.
+	 * Zero points right and 90 points up. Identical positions return zero.
+	 * @return the angle in degrees, using {@link #atan2Deg360(float, float)} */
+	public static float angleTo (float fromX, float fromY, float toX, float toY) {
+		return atan2Deg360(toY - fromY, toX - fromX);
+	}
+
 	/** Returns acos in radians; less accurate than Math.acos but may be faster. Average error of 0.00002845 radians (0.0016300649
 	 * degrees), largest error of 0.000067548 radians (0.0038702153 degrees). This implementation does not return NaN if given an
 	 * out-of-range input (Math.acos does return NaN), unless the input is NaN.
