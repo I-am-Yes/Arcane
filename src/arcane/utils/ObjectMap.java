@@ -79,7 +79,7 @@ public class ObjectMap<K, V> implements Iterable<ObjectMap.Entry<K, V>> {
 		this(initialCapacity, 0.8f);
 	}
 
-	/** Creates a new map with the specified initial capacity and load factor. This map will hold initialCapacity items before
+	/** Creates a new map with the specified initial capacity and load factor. This map will hold initialCapacity item before
 	 * growing the backing table.
 	 * @param initialCapacity The backing array size is initialCapacity / loadFactor, increased to the next power of two. */
 	public ObjectMap(int initialCapacity, float loadFactor) {
@@ -217,7 +217,7 @@ public class ObjectMap<K, V> implements Iterable<ObjectMap.Entry<K, V>> {
 		return oldValue;
 	}
 
-	/** Returns true if the map has one or more items. */
+	/** Returns true if the map has one or more item. */
 	public boolean notEmpty () {
 		return size > 0;
 	}
@@ -228,7 +228,7 @@ public class ObjectMap<K, V> implements Iterable<ObjectMap.Entry<K, V>> {
 	}
 
 	/** Reduces the size of the backing arrays to be the specified capacity / loadFactor, or less. If the capacity is already less,
-	 * nothing is done. If the map contains more items than the specified capacity, the next highest power of two capacity is used
+	 * nothing is done. If the map contains more item than the specified capacity, the next highest power of two capacity is used
 	 * instead. */
 	public void shrink (int maximumCapacity) {
 		if (maximumCapacity < 0) throw new IllegalArgumentException("maximumCapacity must be >= 0: " + maximumCapacity);
@@ -298,8 +298,8 @@ public class ObjectMap<K, V> implements Iterable<ObjectMap.Entry<K, V>> {
 		return null;
 	}
 
-	/** Increases the size of the backing array to accommodate the specified number of additional items / loadFactor. Useful before
-	 * adding many items to avoid multiple backing array resizes. */
+	/** Increases the size of the backing array to accommodate the specified number of additional item / loadFactor. Useful before
+	 * adding many item to avoid multiple backing array resizes. */
 	public void ensureCapacity (int additionalCapacity) {
 		int tableSize = tableSize(size + additionalCapacity, loadFactor);
 		if (keyTable.length < tableSize) resize(tableSize);

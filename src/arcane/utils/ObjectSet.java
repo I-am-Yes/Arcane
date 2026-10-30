@@ -74,7 +74,7 @@ public class ObjectSet<T> implements Iterable<T> {
 		this(initialCapacity, 0.8f);
 	}
 
-	/** Creates a new set with the specified initial capacity and load factor. This set will hold initialCapacity items before
+	/** Creates a new set with the specified initial capacity and load factor. This set will hold initialCapacity item before
 	 * growing the backing table.
 	 * @param initialCapacity The backing array size is initialCapacity / loadFactor, increased to the next power of two. */
 	public ObjectSet(int initialCapacity, float loadFactor) {
@@ -200,7 +200,7 @@ public class ObjectSet<T> implements Iterable<T> {
 		return true;
 	}
 
-	/** Returns true if the set has one or more items. */
+	/** Returns true if the set has one or more item. */
 	public boolean notEmpty () {
 		return size > 0;
 	}
@@ -211,7 +211,7 @@ public class ObjectSet<T> implements Iterable<T> {
 	}
 
 	/** Reduces the size of the backing arrays to be the specified capacity / loadFactor, or less. If the capacity is already less,
-	 * nothing is done. If the set contains more items than the specified capacity, the next highest power of two capacity is used
+	 * nothing is done. If the set contains more item than the specified capacity, the next highest power of two capacity is used
 	 * instead. */
 	public void shrink (int maximumCapacity) {
 		if (maximumCapacity < 0) throw new IllegalArgumentException("maximumCapacity must be >= 0: " + maximumCapacity);
@@ -256,8 +256,8 @@ public class ObjectSet<T> implements Iterable<T> {
 		throw new IllegalStateException("ObjectSet is empty.");
 	}
 
-	/** Increases the size of the backing array to accommodate the specified number of additional items / loadFactor. Useful before
-	 * adding many items to avoid multiple backing array resizes. */
+	/** Increases the size of the backing array to accommodate the specified number of additional item / loadFactor. Useful before
+	 * adding many item to avoid multiple backing array resizes. */
 	public void ensureCapacity (int additionalCapacity) {
 		int tableSize = tableSize(size + additionalCapacity, loadFactor);
 		if (keyTable.length < tableSize) resize(tableSize);

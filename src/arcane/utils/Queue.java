@@ -108,8 +108,8 @@ public class Queue<T> implements Iterable<T> {
 		this.size++;
 	}
 
-	/** Increases the size of the backing array to accommodate the specified number of additional items. Useful before adding many
-	 * items to avoid multiple backing array resizes. */
+	/** Increases the size of the backing array to accommodate the specified number of additional item. Useful before adding many
+	 * item to avoid multiple backing array resizes. */
 	public void ensureCapacity (int additional) {
 		final int needed = size + additional;
 		if (values.length < needed) {
@@ -256,7 +256,7 @@ public class Queue<T> implements Iterable<T> {
 		return value;
 	}
 
-	/** Returns true if the queue has one or more items. */
+	/** Returns true if the queue has one or more item. */
 	public boolean notEmpty () {
 		return size > 0;
 	}
@@ -338,7 +338,7 @@ public class Queue<T> implements Iterable<T> {
 		this.size = 0;
 	}
 
-	/** Returns an iterator for the items in the queue. Remove is supported.
+	/** Returns an iterator for the item in the queue. Remove is supported.
 	 * <p>
 	 * If {@link com.badlogic.gdx.utils.Collections#allocateIterators} is false, the same iterator instance is returned each time this method is called.
 	 * Use the {@link QueueIterator} constructor for nested or multithreaded iteration. */

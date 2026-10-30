@@ -192,7 +192,7 @@ public class Array<T> implements Iterable<T> {
 		items[index] = value;
 	}
 
-	/** Inserts the specified number of items at the specified index. The new items will have values equal to the values at those
+	/** Inserts the specified number of item at the specified index. The new item will have values equal to the values at those
 	 * indices before the insertion. */
 	public void insertRange (int index, int count) {
 		if (index > size) throw new IndexOutOfBoundsException("index can't be > size: " + index + " > " + size);
@@ -369,7 +369,7 @@ public class Array<T> implements Iterable<T> {
 		return value;
 	}
 
-	/** Removes the items between the specified indices, inclusive. */
+	/** Removes the item between the specified indices, inclusive. */
 	public void removeRange (int start, int end) {
 		int n = size;
 		if (end >= n) throw new IndexOutOfBoundsException("end can't be >= size: " + end + " >= " + size);
@@ -441,7 +441,7 @@ public class Array<T> implements Iterable<T> {
 		return items[0];
 	}
 
-	/** Returns true if the array has one or more items. */
+	/** Returns true if the array has one or more item. */
 	public boolean notEmpty () {
 		return size > 0;
 	}
@@ -456,16 +456,16 @@ public class Array<T> implements Iterable<T> {
 		size = 0;
 	}
 
-	/** Reduces the size of the backing array to the size of the actual items. This is useful to release memory when many items
-	 * have been removed, or if it is known that more items will not be added.
+	/** Reduces the size of the backing array to the size of the actual item. This is useful to release memory when many item
+	 * have been removed, or if it is known that more item will not be added.
 	 * @return {@link #items} */
 	public T[] shrink () {
 		if (items.length != size) resize(size);
 		return items;
 	}
 
-	/** Increases the size of the backing array to accommodate the specified number of additional items. Useful before adding many
-	 * items to avoid multiple backing array resizes.
+	/** Increases the size of the backing array to accommodate the specified number of additional item. Useful before adding many
+	 * item to avoid multiple backing array resizes.
 	 * @return {@link #items} */
 	public T[] ensureCapacity (int additionalCapacity) {
 		if (additionalCapacity < 0) throw new IllegalArgumentException("additionalCapacity must be >= 0: " + additionalCapacity);
@@ -483,7 +483,7 @@ public class Array<T> implements Iterable<T> {
 		return items;
 	}
 
-	/** Creates a new backing array with the specified size containing the current items. */
+	/** Creates a new backing array with the specified size containing the current item. */
 	protected T[] resize (int newSize) {
 		items = Arrays.copyOf(items, newSize);
 		return items;
@@ -546,7 +546,7 @@ public class Array<T> implements Iterable<T> {
 		}
 	}
 
-	/** Returns an iterator for the items in the array. Remove is supported.
+	/** Returns an iterator for the item in the array. Remove is supported.
 	 * <p>
 	 * If {@link Collections#allocateIterators} is false, the same iterator instance is returned each time this method is called.
 	 * Use the {@link ArrayIterator} constructor for nested or multithreaded iteration. */
@@ -556,7 +556,7 @@ public class Array<T> implements Iterable<T> {
 		return iterable.iterator();
 	}
 
-	/** Returns an iterable for the selected items in the array. Remove is supported, but not between hasNext() and next().
+	/** Returns an iterable for the selected item in the array. Remove is supported, but not between hasNext() and next().
 	 * <p>
 	 * If {@link Collections#allocateIterators} is false, the same iterable instance is returned each time this method is called.
 	 * Use the {@link Predicate.PredicateIterable} constructor for nested or multithreaded iteration. */
@@ -585,7 +585,7 @@ public class Array<T> implements Iterable<T> {
 		return items[MathUtils.random(0, size - 1)];
 	}
 
-	/** Returns the items as an array. Note the array is typed, so the {@link #Array(ArraySupplier)} constructor must have been
+	/** Returns the item as an array. Note the array is typed, so the {@link #Array(ArraySupplier)} constructor must have been
 	 * used. Otherwise use {@link #toArray(ArraySupplier)} to specify the array type. */
 	public T[] toArray () {
 		return Arrays.copyOf(items, size);
