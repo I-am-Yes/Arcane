@@ -100,23 +100,17 @@ public class Artist {
         }
     }
 
-    public static void DrawSprite(
-            Sprite sprite, float x, float y,
-            float sizeX, float sizeY) {
-
-        DrawSprite(sprite, x, y, sizeX, sizeY, batch);
+    public static void DrawSprite(Sprite sprite) {
+        DrawSprite(sprite, batch);
     }
 
-    public static void DrawSprite(
-            Sprite sprite, float x, float y,
-            float sizeX, float sizeY, SpriteBatch batch) {
+    public static void DrawSprite(Sprite sprite, SpriteBatch batch) {
 
         if (sprite == null || batch == null) return;
 
         useBatch(batch);
 
-        sprite.setSize(sizeX, sizeY);
-        sprite.setPosition(x, y);
+
         sprite.draw(batch);
     }
 

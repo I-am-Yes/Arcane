@@ -1,5 +1,6 @@
 package arcane.input;
 
+import arcane.Cores;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.*;
@@ -120,6 +121,10 @@ public class InputHandler extends com.badlogic.gdx.InputAdapter {
     public Vector2 getMousePos() {
         mousePos.set(Gdx.input.getX(), Gdx.input.getY());
         return mousePos;
+    }
+
+    public Vector2 getMouseWorldPos() {
+        return getMouseWorldPos(Cores.viewport);
     }
 
     public Vector2 getMouseWorldPos(Viewport viewport) {

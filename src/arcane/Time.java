@@ -1,8 +1,12 @@
 package arcane;
 
-import arcane.math.MathUtils;
+import arcane.math.*;
 import arcane.extra.TimeEx;
 import com.badlogic.gdx.Gdx;
+
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.function.BooleanSupplier;
 
 public class Time {
     private static float gameSpeed = 1.0f; //default x1 speed
@@ -50,6 +54,29 @@ public class Time {
 
         TimeEx.accumulateTick(tick, delta());
         return tick;
+    }
+
+    private static final ArrayList<BooleanSupplier> waiting =
+            new ArrayList<>();
+
+    static {
+        Events.run(Events.Trigger.tickUpdate, Time::updateWaiting);
+    }
+    /**
+     * Runs an action each tick until it finishes.
+     *
+     * @param action returns true when finished, false to continue
+     */
+    public static void wait(BooleanSupplier action) {
+        waiting.add(Objects.requireNonNull(action));
+    }
+
+    private static void updateWaiting() {
+        for (int i = waiting.size() - 1; i >= 0; i--) {
+            if (waiting.get(i).getAsBoolean()) {
+                waiting.remove(i);
+            }
+        }
     }
 
     public static int getTargetUPS() {
